@@ -1,35 +1,33 @@
 #include <stdio.h>
 
-int calcDivisao(int, int);
+int maiorNumero(int, int);
 
 void main()
 {
-    int n, i, a, b;
+    int n, a, b;
 
-    printf("Informe o número de duplas: ");
+    printf("Informe o número de duplas a serem lidas: ");
     scanf("%d", &n);
-    printf("\n");
 
-    for (i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        printf("Digite o primeiro valor: ");
+        printf("Informa o primeiro número: ");
         scanf("%d", &a);
 
-        printf("Digite o segundo valor: ");
-        scanf(" %d", &b);
+        printf("Informa o segundo número: ");
+        scanf("%d", &b);
+        int resposta = maiorNumero(a, b);
 
-        int resposta = calcDivisao(a, b);
+        if (resposta == -1)
+            printf("Eles são iguais");
+        else
+            printf("%d", resposta);
 
-        if (resposta == 1)
-            printf("Divisão por zero\n");
+        printf("\n\n");
     }
 }
 
-int calcDivisao(int a, int b)
+int maiorNumero(int a, int b)
 {
-    if (a == 0 || b == 0)
-        return 1;
-
-    printf("%.1f\n\n", (float)a / (float)b);
-    return 0;
+    return a == b ? -1 : a < b ? b : a;
 }

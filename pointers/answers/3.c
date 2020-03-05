@@ -1,20 +1,50 @@
 #include <stdio.h>
 
-void exibeDivisores(int);
+void leDupla(int *, int *);
+void duplaClassificada(int, int, int);
+void ordemCrescente(int, int);
+void ordemDescrescente(int, int);
 
 void main()
 {
-    for (int i = 1; i <= 20; i++)
-        exibeDivisores(i);
+    int a, b;
+
+    do
+    {
+        leDupla(&a, &b);
+    } while (a != b);
 }
 
-void exibeDivisores(int n)
+void leDupla(int *a, int *b)
 {
-    printf("%d: ", n);
+    printf("Informe o primeiro valor: ");
+    scanf("%d", a);
 
-    for (int i = 1; i <= n; i++)
-        if (n % i == 0)
-            printf("%d ", i);
+    printf("Informe o segundo valor: ");
+    scanf("%d", b);
 
-    printf("\n");
+    int soma = *a + *b;
+
+    duplaClassificada(soma % 2, *a, *b);
+}
+
+void duplaClassificada(int ordem, int a, int b)
+{
+    ordem ? ordemDescrescente(a, b) : ordemCrescente(a, b);
+}
+
+void ordemCrescente(int a, int b)
+{
+    if (a > b)
+        printf("%d %d\n\n", b, a);
+    else if (a < b)
+        printf("%d %d\n\n", a, b);
+}
+
+void ordemDescrescente(int a, int b)
+{
+    if (a < b)
+        printf("%d %d\n\n", b, a);
+    else if (a > b)
+        printf("%d %d\n\n", a, b);
 }

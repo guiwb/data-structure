@@ -1,33 +1,28 @@
 #include <stdio.h>
 
-void leDupla(int *, int *);
-void duplaCrescente(int, int);
+void exibeOnzeTracos(void);
+void retanguloTracos(void);
 
 void main()
 {
-    int a, b;
-
-    do
+    for (int i = 0; i < 2; i++)
     {
-        leDupla(&a, &b);
-    } while (a != b);
+        retanguloTracos();
+        printf("\n");
+    }
 }
 
-void leDupla(int *a, int *b)
+void exibeOnzeTracos()
 {
-    printf("Informe o primeiro valor: ");
-    scanf("%d", a);
-
-    printf("Informe o segundo valor: ");
-    scanf("%d", b);
-
-    duplaCrescente(*a, *b);
+    for (int i = 0; i < 11; i++)
+        printf("-");
 }
 
-void duplaCrescente(int a, int b)
+void retanguloTracos()
 {
-    if (a > b)
-        printf("%d %d\n\n", b, a);
-    else if (a < b)
-        printf("%d %d\n\n", a, b);
+    for (int i = 0; i < 4; i++)
+    {
+        exibeOnzeTracos();
+        printf("\n");
+    }
 }

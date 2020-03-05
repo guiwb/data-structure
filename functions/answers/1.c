@@ -1,27 +1,31 @@
 #include <stdio.h>
 
-void duplaCrescente(int, int);
-
 void main()
 {
-    int a, b;
+    int q;
 
-    do
+    printf("Informe a quantidade de alunos: ");
+    scanf("%d", &q);
+
+    int alunos[q][2], mais_alto = 0, qtd_alunas = 0, soma_altura_alunas = 0;
+
+    for (int i = 0; i < q; i++)
     {
-        printf("Informe o primeiro valor: ");
-        scanf("%d", &a);
+        printf("Informe a altura (em cm) do(a) aluno(a) %d: ", i + 1);
+        scanf("%d", &alunos[i][0]);
 
-        printf("Informe o segundo valor: ");
-        scanf("%d", &b);
+        printf("Informe o sexo do(a) aluno(a) %d: [1] Masculino / [2] Feminino ", i + 1);
+        scanf("%d", &alunos[i][1]);
 
-        duplaCrescente(a, b);
-    } while (a != b);
-}
+        if (alunos[i][1] == 1 && mais_alto < alunos[i][0])
+            mais_alto = alunos[i][0];
+        else if (alunos[i][1] == 2)
+        {
+            qtd_alunas++;
+            soma_altura_alunas += alunos[i][0];
+        }
+    }
 
-void duplaCrescente(int a, int b)
-{
-    if (a > b)
-        printf("%d %d\n\n", b, a);
-    else if (a < b)
-        printf("%d %d\n\n", a, b);
+    printf("O aluno mais alto tem %dcm de altura\n", mais_alto);
+    printf("A média de altura das alunas é %dcm", soma_altura_alunas / qtd_alunas);
 }
